@@ -16,10 +16,10 @@ extension Color {
 
     public static let themeGray50 = Color.themeGray.opacity(0.5)
     public static let themeSteel10 = Color.themeSteel.opacity(0.1)
-    public static let themeSteel20 = Color.themeSteel.opacity(0.2)
+    public static let themeSteel20 = UIColor(hex: 0x1992F5, alpha: 0.2)
     public static let themeSteel30 = Color.themeSteel.opacity(0.3)
     public static let themeYellow20 = Color.themeYellow.opacity(0.2)
-    public static let themeYellow50 = Color.themeYellow.opacity(0.5)
+    public static let themeYellow50 = UIColor(hex: 0x1992F5, alpha: 0.5)
     public static let themeRed50 = Color.themeRed.opacity(0.5)
 
     public static let themeJacob = Color("Jacob", bundle: Bundle.module)
@@ -46,7 +46,7 @@ extension Color {
 }
 
 extension UIColor {
-    public static let themeYellowD = UIColor(hex: 0xffa800)
+    public static let themeYellowD = UIColor(hex: 0x1992F5)
     public static let themeYellowL = UIColor(hex: 0xff8a00)
     public static let themeGreenD = UIColor(hex: 0x05c46b)
     public static let themeGreenL = UIColor(hex: 0x04ad5f)
