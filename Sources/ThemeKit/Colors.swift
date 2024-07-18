@@ -72,7 +72,7 @@ extension Color {
 
 extension UIColor {
     public static let themeYellowD = UIColor(hex: 0x1992F5)
-    public static let themeYellowL = UIColor(hex: 0xff8a00)
+    public static let themeYellowL = UIColor(hex: 0x1992F5)
     public static let themeGreenD = UIColor(hex: 0x05c46b)
     public static let themeGreenL = UIColor(hex: 0x04ad5f)
     public static let themeRedD = UIColor(hex: 0xf43a4f)
