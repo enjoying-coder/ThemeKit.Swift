@@ -3,23 +3,48 @@ import UIKit
 import UIExtensions
 
 extension Color {
+    
+    init(hex: String) {
+            let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+            var int: UInt64 = 0
+            Scanner(string: hex).scanHexInt64(&int)
+            let a, r, g, b: UInt64
+            switch hex.count {
+            case 3: // RGB (12-bit)
+                (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+            case 6: // RGB (24-bit)
+                (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+            case 8: // ARGB (32-bit)
+                (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+            default:
+                (a, r, g, b) = (255, 0, 0, 0)
+            }
+            self.init(
+                .sRGB,
+                red: Double(r) / 255,
+                green: Double(g) / 255,
+                blue: Double(b) / 255,
+                opacity: Double(a) / 255
+            )
+        }
+    
     public static let themeGray = Color("Gray", bundle: Bundle.module)
     public static let themeLightGray = Color("LightGray", bundle: Bundle.module)
     public static let themeDark = Color("Dark", bundle: Bundle.module)
     public static let themeDarker = Color("Darker", bundle: Bundle.module)
     public static let themeSteel = Color("Steel", bundle: Bundle.module)
     public static let themeSteelLight = Color("SteelLight", bundle: Bundle.module)
-    public static let themeYellow = Color("Yellow", bundle: Bundle.module)
+    public static let themeYellow = Color(hex: "#1992F5")
     public static let themeGreen = Color("Green", bundle: Bundle.module)
     public static let themeRed = Color("Red", bundle: Bundle.module)
     public static let themeStronbuy = Color("Stronbuy", bundle: Bundle.module)
 
     public static let themeGray50 = Color.themeGray.opacity(0.5)
     public static let themeSteel10 = Color.themeSteel.opacity(0.1)
-    public static let themeSteel20 = UIColor(hex: 0x1992F5, alpha: 0.2)
+    public static let themeSteel20 = Color.themeSteel.opacity(0.2)
     public static let themeSteel30 = Color.themeSteel.opacity(0.3)
     public static let themeYellow20 = Color.themeYellow.opacity(0.2)
-    public static let themeYellow50 = UIColor(hex: 0x1992F5, alpha: 0.5)
+    public static let themeYellow50 = Color.themeYellow.opacity(0.5)
     public static let themeRed50 = Color.themeRed.opacity(0.5)
 
     public static let themeJacob = Color("Jacob", bundle: Bundle.module)
